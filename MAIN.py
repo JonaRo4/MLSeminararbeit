@@ -29,7 +29,7 @@ def main():
 
     # Daten speichern
     if st.button("Daten speichern"):
-        save_data(state, tool_type, process_params, component_name, machining_duration)
+        save_data(state, tool_type, vorschub, drehzahl, zustellung, component_name, machining_duration)
         st.success("Daten erfolgreich gespeichert!")
 
     # Darstellung der erfassten Daten
