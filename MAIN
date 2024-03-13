@@ -7,7 +7,7 @@ import numpy as np
 
 def load_model():
     # Laden des trainierten CNN-Modells
-    model = tf.keras.models.load_model('Final.sav')
+    model = tf.keras.models.load_model('Final_model.h5')
     return model
 
 def main():
