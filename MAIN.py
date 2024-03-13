@@ -18,9 +18,9 @@ def main():
     st.subheader("Erfassung")
     state = st.file_uploader("Bilddaten hochladen", type=['jpg', 'png'])
     tool_type = st.text_input("Werkzeugtyp eingeben")
-    vorschub = st.text_input("Vorschub eingeben")
-    drehzahl = st.text_input("Drehzahl eingeben")
-    zustellung = st.text_input("Zustellung eingeben")
+    vorschub = st.text_input("Vorschub eingeben (In mm/min)")
+    drehzahl = st.text_input("Drehzahl eingeben (In min^-1")
+    zustellung = st.text_input("Zustellung eingeben (In mm)")
     component_name = st.text_input("Bauteilname eingeben")
     machining_duration = st.number_input("Bearbeitungsdauer pro Bauteil eingeben (in Sekunden)", 
                                      min_value=0, 
