@@ -54,11 +54,13 @@ def main():
         result = classes[np.argmax(prediction)]
         st.write(f"Das hochgeladene Bild wird als '{result}' klassifiziert.")
 
-def save_data(state, tool_type, process_params, component_name, machining_duration):
+def save_data(state, tool_type, vorschub, drehzahl, zustellung, component_name, machining_duration):
     data = {
         'State': [state],
         'Tool Type': [tool_type],
-        'Process Parameters': [process_params],
+        'Vorschub': [vorschub],
+        'Drehzahl': [drehzahl],
+        'Zustellung': [zustellung],
         'Component Name': [component_name],
         'Machining Duration': [machining_duration]
     }
