@@ -73,6 +73,7 @@ def save_data(state, tool_type, vorschub, drehzahl, zustellung, component_name, 
         df = pd.concat([df, new_data], ignore_index=True)
         df.to_csv('data.csv', index=False)
 
+
 def load_data():
     if os.path.exists('data.csv'):
         return pd.read_csv('data.csv')
