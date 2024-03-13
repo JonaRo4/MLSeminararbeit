@@ -22,7 +22,7 @@ def main():
     drehzahl = st.text_input("Drehzahl eingeben")
     zustellung = st.text_input("Zustellung eingeben")
     component_name = st.text_input("Bauteilname eingeben")
-    machining_duration = st.number_input("Bearbeitungsdauer pro Bauteil eingeben (in Minuten)", 
+    machining_duration = st.number_input("Bearbeitungsdauer pro Bauteil eingeben (in Sekunden)", 
                                      min_value=0, 
                                      step=1, 
                                      format="%d")
