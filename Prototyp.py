@@ -33,7 +33,7 @@ def main():
             return
         
         # Nutzungszeit des Werkzeugs eingeben
-        nutzungszeit = st.number_input('Nutzungszeit des Werkzeugs in Stunden', min_value=0.0, step=0.5)
+        nutzungszeit = st.number_input('Nutzungszeit des Werkzeugs in Stunden (in halben Schritten)', min_value=0.0, step=0.5)
         
         # Klassifizierung des hochgeladenen Bildes
         if st.button('Klassifizieren'):
@@ -51,15 +51,11 @@ def main():
             
             # Ergebnisse anzeigen
             st.write('Klassifizierung:', predicted_class)
-            st.write('Vorschub:', vorschub, 'mm/min')
-            st.write('Drehzahl:', drehzahl, 'min-1')
-            st.write('Zustellung:', zustellung, 'mm')
-            st.write('Werkzeugtyp:', werkzeugtyp)
-            st.write('Nutzungszeit:', nutzungszeit, 'Stunden')
 
 # Streamlit-App starten
 if __name__ == '__main__':
     main()
+
 
 
 
