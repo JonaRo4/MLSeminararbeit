@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 
 # Laden des trainierten Modells
-model = load_model("Final_model.h5")
+model = load_model("FM.h5")
 
 # Klassenlabels definieren
 class_labels = ['Neu', 'Mittel', 'Defekt']
