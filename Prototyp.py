@@ -22,7 +22,7 @@ def main():
         # Vorschub, Drehzahl, Zustellung und Werkzeugtyp eingeben
         vorschub = st.number_input('Vorschub in mm/min', min_value=0, step=1)
         drehzahl = st.number_input('Drehzahl in min-1', min_value=0, step=1)
-        zustellung = st.number_input('Zustellung in mm', min_value=0, max_value=None, step=0.1)
+        zustellung = st.number_input('Zustellung in mm', min_value=0, max_value=None, step=0.1, format="%.1f")
         werkzeugtyp = st.text_input('Werkzeugtyp eingeben', '')
         
         # Nutzungszeit des Werkzeugs eingeben
@@ -53,4 +53,5 @@ def main():
 # Streamlit-App starten
 if __name__ == '__main__':
     main()
+
 
