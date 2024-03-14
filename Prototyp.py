@@ -33,7 +33,7 @@ def main():
             return
         
         # Nutzungszeit des Werkzeugs eingeben
-        nutzungszeit = st.number_input('Nutzungszeit des Werkzeugs in Stunden (in halben Schritten)', min_value=0.0, step=0.5)
+        nutzungszeit = st.number_input('Nutzungszeit des Werkzeugs in Stunden', min_value=0.0, step=0.5)
         
         # Klassifizierung des hochgeladenen Bildes
         if st.button('Klassifizieren'):
