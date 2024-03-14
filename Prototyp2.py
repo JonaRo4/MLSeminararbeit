@@ -57,17 +57,17 @@ def main():
             predicted_class = class_labels[np.argmax(prediction)]
             
             # Ergebnisse speichern
-            results_df.loc[len(results_df)] = [uploaded_image.name, predicted_class, nutzungszeit]
+            results_df.loc[len(results_df)] = [uploaded_image.name, predicted_class, float(nutzungszeit)]  # Konvertieren Sie nutzungszeit in float
             
             # Ergebnisse anzeigen
             st.write('Werkzeugzustand:', predicted_class)
     
     # Tabelle der gespeicherten Ergebnisse anzeigen
     st.write('Gespeicherte Ergebnisse:')
-    st.write(results_df.astype({'Nutzungszeit': float}))  # Explizite Festlegung des Datentyps
-
+    st.write(results_df)
 
 # Streamlit-App starten
 if __name__ == '__main__':
     main()
+
 
