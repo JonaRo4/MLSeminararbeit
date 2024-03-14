@@ -64,8 +64,9 @@ def main():
     
     # Tabelle der gespeicherten Ergebnisse anzeigen
     st.write('Gespeicherte Ergebnisse:')
-    st.write(results_df)
+    st.write(results_df.astype({'Nutzungszeit': float}))  # Explizite Festlegung des Datentyps
 
 # Streamlit-App starten
 if __name__ == '__main__':
     main()
+
