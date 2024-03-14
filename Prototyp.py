@@ -22,8 +22,15 @@ def main():
         # Vorschub, Drehzahl, Zustellung und Werkzeugtyp eingeben
         vorschub = st.number_input('Vorschub in mm/min', min_value=0, step=1)
         drehzahl = st.number_input('Drehzahl in min-1', min_value=0, step=1)
-        zustellung = st.number_input('Zustellung in mm', min_value=0, max_value=None, step=0.1, format="%.1f")
+        zustellung = st.text_input('Zustellung in mm', value='0.0')
         werkzeugtyp = st.text_input('Werkzeugtyp eingeben', '')
+        
+        try:
+            zustellung = float(zustellung)
+            assert zustellung >= 0  # Überprüfen, dass die Eingabe nicht negativ ist
+        except (ValueError, AssertionError):
+            st.error('Bitte geben Sie eine gültige positive Zahl für die Zustellung ein.')
+            return
         
         # Nutzungszeit des Werkzeugs eingeben
         nutzungszeit = st.number_input('Nutzungszeit des Werkzeugs in Stunden (in halben Schritten)', min_value=0.0, step=0.5)
@@ -53,5 +60,6 @@ def main():
 # Streamlit-App starten
 if __name__ == '__main__':
     main()
+
 
 
