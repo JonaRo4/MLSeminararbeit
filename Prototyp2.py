@@ -1,3 +1,5 @@
+pip install numpy==1.19.5
+
 import streamlit as st
 from tensorflow.keras.models import load_model
 from PIL import Image
