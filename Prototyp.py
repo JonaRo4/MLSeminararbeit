@@ -17,7 +17,7 @@ def main():
     col1, col2 = st.beta_columns([2, 1])
     
     # Bild hochladen
-    uploaded_image = col1.file_uploader("Bild von Werkzeug hochladen", type=["jpg", "png", "jpeg"])
+    uploaded_image = col1.file_uploader("Bild von Werkzeug hochladen", type=["jpg", "png", "jpeg"], key="uploaded_image")
     
     if uploaded_image is not None:
         col1.image(uploaded_image, caption='Hochgeladenes Bild', use_column_width=True)
@@ -59,10 +59,6 @@ def main():
 if __name__ == '__main__':
     main()
 
-
-# Streamlit-App starten
-if __name__ == '__main__':
-    main()
 
 
 
