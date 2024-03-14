@@ -66,6 +66,7 @@ def main():
     st.write('Gespeicherte Ergebnisse:')
     st.write(results_df.astype({'Nutzungszeit': float}))  # Explizite Festlegung des Datentyps
 
+
 # Streamlit-App starten
 if __name__ == '__main__':
     main()
