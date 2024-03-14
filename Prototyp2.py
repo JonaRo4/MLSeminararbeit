@@ -65,11 +65,13 @@ def main():
             st.write('Werkzeugzustand:', predicted_class)
     
     # Tabelle der gespeicherten Ergebnisse anzeigen
+    results_df['Nutzungszeit'] = results_df['Nutzungszeit'].astype(float)  # Konvertiere Nutzungszeit in float
     st.write('Gespeicherte Ergebnisse:')
     st.write(results_df)
 
 # Streamlit-App starten
 if __name__ == '__main__':
     main()
+
 
 
