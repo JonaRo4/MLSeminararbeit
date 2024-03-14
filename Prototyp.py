@@ -25,7 +25,7 @@ def main():
         # Vorschub, Drehzahl, Zustellung und Werkzeugtyp eingeben
         vorschub = col2.number_input('Vorschub in mm/min', min_value=0, step=1)
         drehzahl = col2.number_input('Drehzahl in min-1', min_value=0, step=1)
-        zustellung = col2.text_input('Zustellung in mm', value='0.0')
+        zustellung = col2.text_input('Zustellung in mm', min_value=0, step=1)
         werkzeugtyp = col2.text_input('Werkzeugtyp eingeben', '')
         
         try:
