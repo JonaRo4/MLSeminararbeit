@@ -10,13 +10,11 @@ model = load_model("FM.h5")
 # Klassenlabels definieren
 class_labels = ['Neu', 'Mittel', 'Defekt']
 
-# Datenrahmen für die Speicherung der Ergebnisse erstellen
-results_df = pd.DataFrame(columns=['Bild', 'Werkzeugzustand', 'Nutzungszeit'])
-
 # Streamlit-App definieren
 def main():
-    global results_df  # Deklaration der globalen Variable results_df
-
+    # Datenrahmen für die Speicherung der Ergebnisse erstellen
+    results_df = pd.DataFrame(columns=['Bild', 'Werkzeugzustand', 'Nutzungszeit'])
+    
     st.title('Werkzeugklassifizierung')
     
     # Spalten für Bild und Dateneingaben erstellen
@@ -65,7 +63,15 @@ def main():
             st.write('Werkzeugzustand:', predicted_class)
     
     # Tabelle der gespeicherten Ergebnisse anzeigen
-    result
+    results_df['Nutzungszeit'] = results_df['Nutzungszeit'].astype(float)  # Konvertiere Nutzungszeit in float
+    results_df = results_df.astype({'Bild': 'str', 'Werkzeugzustand': 'str'})  # Konvertiere die Spalten in den richtigen Datentyp
+    st.write('Gespeicherte Ergebnisse:')
+    st.write(results_df)
+
+# Streamlit-App starten
+if __name__ == '__main__':
+    main()
+
 
 
 
