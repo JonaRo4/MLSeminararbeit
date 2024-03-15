@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 from PIL import Image
+import pandas as pd
 
 # Laden des trainierten Modells
 model = load_model("FM.h5")
@@ -57,10 +58,11 @@ def main():
             st.write('Werkzeugzustand:', predicted_class)
             
             # Tabelle für die Ergebnisse erstellen
-            result_data = {'Werkzeugtyp': werkzeugtyp,
-                           'Nutzungszeit (Stunden)': nutzungszeit,
-                           'Werkzeugzustand': predicted_class}
-            st.table(result_data)
+            result_data = {'Werkzeugtyp': [werkzeugtyp],
+                           'Nutzungszeit (Stunden)': [nutzungszeit],
+                           'Werkzeugzustand': [predicted_class]}
+            df = pd.DataFrame(result_data)
+            st.table(df)
 
             # Plot der Eingabedaten
             plot_data(nutzungszeit, predicted_class)
@@ -90,4 +92,5 @@ def plot_data(nutzungszeit, predicted_class):
 # Streamlit-App starten
 if __name__ == '__main__':
     main()
+
 
