@@ -64,12 +64,14 @@ def main():
     
     # Tabelle der gespeicherten Ergebnisse anzeigen
     results_df['Nutzungszeit'] = results_df['Nutzungszeit'].astype(float)  # Konvertiere Nutzungszeit in float
+    results_df = results_df.astype({'Bild': 'str', 'Werkzeugzustand': 'str'})  # Konvertiere die Spalten in den richtigen Datentyp
     st.write('Gespeicherte Ergebnisse:')
     st.write(results_df)
 
 # Streamlit-App starten
 if __name__ == '__main__':
     main()
+
 
 
 
