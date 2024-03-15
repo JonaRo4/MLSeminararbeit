@@ -1,24 +1,34 @@
 import streamlit as st
 from PIL import Image
-import tensorflow as tf
-import numpy as np
+import torch
+from torchvision import transforms
+import torch.nn.functional as F
 
 # Laden des vortrainierten Modells
-model = tf.keras.models.load_model('FM_richtig.h5')
+model = torch.load('FM_richtig.pth', map_location=torch.device('cpu'))
+model.eval()
+
+# Transformation für die Vorverarbeitung der Bilder
+preprocess = transforms.Compose([
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+])
 
 # Funktion zur Vorhersage der Werkzeugklasse
 def predict_tool_class(image):
     # Vorverarbeitung des Bildes
-    image = image.resize((224, 224))  # Anpassen der Bildgröße
-    image = np.array(image) / 255.0  # Normalisierung
-    image = np.expand_dims(image, axis=0)  # Hinzufügen einer Dimension für den Batch
+    image = preprocess(image).unsqueeze(0)
 
     # Vorhersage mit dem Modell
-    prediction = model.predict(image)
+    with torch.no_grad():
+        outputs = model(image)
+        predicted_class = F.softmax(outputs, dim=1)
 
     # Klassenbezeichnungen
     classes = ['Defekt', 'Mittel', 'Neu']
-    predicted_class = classes[np.argmax(prediction)]
+    predicted_class = classes[predicted_class.argmax()]
 
     return predicted_class
 
@@ -41,5 +51,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
