@@ -15,6 +15,8 @@ results_df = pd.DataFrame(columns=['Bild', 'Werkzeugzustand', 'Nutzungszeit'])
 
 # Streamlit-App definieren
 def main():
+    global results_df  # Deklaration der globalen Variable results_df
+
     st.title('Werkzeugklassifizierung')
     
     # Spalten für Bild und Dateneingaben erstellen
@@ -63,14 +65,8 @@ def main():
             st.write('Werkzeugzustand:', predicted_class)
     
     # Tabelle der gespeicherten Ergebnisse anzeigen
-    results_df['Nutzungszeit'] = results_df['Nutzungszeit'].astype(float)  # Konvertiere Nutzungszeit in float
-    results_df = results_df.astype({'Bild': 'str', 'Werkzeugzustand': 'str'})  # Konvertiere die Spalten in den richtigen Datentyp
-    st.write('Gespeicherte Ergebnisse:')
-    st.write(results_df)
+    result
 
-# Streamlit-App starten
-if __name__ == '__main__':
-    main()
 
 
 
