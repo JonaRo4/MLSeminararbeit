@@ -6,7 +6,7 @@ from PIL import Image
 import pandas as pd
 
 # Laden des trainierten Modells
-model = load_model("FM.h5")
+model = load_model("FM_richtig.h5")
 
 # Klassenlabels definieren
 class_labels = ['Neu', 'Mittel', 'Defekt']
@@ -92,6 +92,7 @@ def plot_data(nutzungszeit, predicted_class):
 # Streamlit-App starten
 if __name__ == '__main__':
     main()
+
 
 
 
