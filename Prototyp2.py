@@ -1,3 +1,5 @@
+# module 'numpy' has no attribute 'bool'. `np.bool` was a deprecated alias for the builtin `bool` Fehlermeldung
+
 import streamlit as st
 from tensorflow.keras.models import load_model
 from PIL import Image
