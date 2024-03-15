@@ -64,12 +64,7 @@ def main():
     
     # Tabelle der gespeicherten Ergebnisse anzeigen
     results_df['Nutzungszeit'] = results_df['Nutzungszeit'].astype(float)  # Konvertiere Nutzungszeit in float
-    results_df = results_df.astype({'Bild': 'str', 'Werkzeugzustand': 'str', 'Nutzungszeit': float})  # Konvertiere die Spalten in den richtigen Datentyp
-    
-    # Überprüfen Sie den Datentyp und geben Sie eine Meldung aus
-    if results_df['Werkzeugzustand'].dtype != bool:
-        st.warning("Datentyp der Spalte 'Werkzeugzustand' ist nicht bool!")
-    
+    results_df['Werkzeugzustand'] = results_df['Werkzeugzustand'].astype(str)  # Konvertiere Werkzeugzustand in String
     st.write('Gespeicherte Ergebnisse:')
     st.write(results_df)
 
