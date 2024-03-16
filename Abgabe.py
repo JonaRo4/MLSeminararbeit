@@ -9,9 +9,13 @@ model = tf.keras.models.load_model('AbgabeModell.h5')
 # Function to predict the tool class
 def predict_tool_class(image):
     try:
+        print("Resizing image...")
         image = image.resize((224, 224))  # Resize image
+        print("Normalizing image...")
         image = np.array(image) / 255.0  # Normalize
+        print("Expanding dimensions...")
         image = np.expand_dims(image, axis=0)  # Add batch dimension
+        print("Predicting class...")
         prediction = model.predict(image)
         classes = ['Defekt', 'Mittel', 'Neu']
         predicted_class = classes[np.argmax(prediction)]
