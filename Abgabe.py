@@ -36,12 +36,15 @@ def main():
         if st.button('Klassifizieren'):
             with st.spinner('Klassifizierung läuft...'):
                 tool_class = predict_tool_class(image)
-                st.success('Klassifizierung abgeschlossen!')
-                st.write('Die Werkzeugklasse ist:', tool_class)
-                
+                if tool_class:
+                    st.success('Klassifizierung abgeschlossen!')
+                    st.write('Die Werkzeugklasse ist:', tool_class)
+                else:
+                    st.error('Fehler bei der Klassifizierung. Bitte versuche es erneut.')
 
 if __name__ == '__main__':
     main()
+
 
 
 
