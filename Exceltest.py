@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+pip install openpyxl
+
 
 # Beispiel Datenframe
 data = {
