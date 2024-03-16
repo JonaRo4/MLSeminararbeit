@@ -2,6 +2,7 @@ import streamlit as st
 from PIL import Image
 import tensorflow as tf
 import numpy as np
+import pandas as pd
 
 # Load pretrained model
 model = tf.keras.models.load_model('AbgabeModell.h5')
@@ -39,11 +40,23 @@ def main():
                 if tool_class:
                     st.success('Klassifizierung abgeschlossen!')
                     st.write('Die Werkzeugklasse ist:', tool_class)
+                    
+                    # Speichern der Daten in einer DataFrame
+                    data = {'Werkzeugname': [tool_name],
+                            'Bearbeitungsdauer (Minuten)': [processing_time],
+                            'Material des Werkzeugs': [material],
+                            'Werkzeugklasse': [tool_class]}
+                    df = pd.DataFrame(data)
+
+                    # Anzeigen der Tabelle
+                    st.write('Gespeicherte Daten:')
+                    st.write(df)
                 else:
                     st.error('Fehler bei der Klassifizierung. Bitte versuche es erneut.')
 
 if __name__ == '__main__':
     main()
+
 
 
 
