@@ -24,7 +24,7 @@ def predict_tool_class(image):
 
 # Streamlit-App
 def main():
-    st.title('Werkzeugzustandsüberwachung')
+    st.title('Werkzeugklassifizierung')
 
     # Bild hochladen
     uploaded_image = st.file_uploader("Bild von Werkzeug hochladen", type=["jpg", "jpeg", "png"])
