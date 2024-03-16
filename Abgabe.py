@@ -29,14 +29,22 @@ def main():
         image = Image.open(uploaded_image)
         st.image(image, caption='Hochgeladenes Bild', use_column_width=True)
 
+        tool_name = st.text_input("Werkzeugname", "")
+        processing_time = st.number_input("Bearbeitungsdauer (in Minuten)", min_value=0)
+        material = st.text_input("Material des Werkzeugs", "")
+
         if st.button('Klassifizieren'):
             with st.spinner('Klassifizierung läuft...'):
                 tool_class = predict_tool_class(image)
                 st.success('Klassifizierung abgeschlossen!')
                 st.write('Die Werkzeugklasse ist:', tool_class)
+                st.write('Werkzeugname:', tool_name)
+                st.write('Bearbeitungsdauer:', processing_time, 'Minuten')
+                st.write('Material des Werkzeugs:', material)
 
 if __name__ == '__main__':
     main()
+
 
 
 
