@@ -7,7 +7,7 @@ import pandas as pd
 # Load pretrained model
 model = tf.keras.models.load_model('AbgabeModell.h5')
 
-# Function to predict the tool class
+# Function to preprocess the image and predict the tool class
 def predict_tool_class(image):
     try:
         image = image.resize((224, 224))  # Resize image
@@ -41,21 +41,22 @@ def main():
                     st.success('Klassifizierung abgeschlossen!')
                     st.write('Die Werkzeugklasse ist:', tool_class)
                     
-                    # Speichern der Daten in einer DataFrame
+                    # Saving the data to a DataFrame
                     data = {'Werkzeugname': [tool_name],
                             'Bearbeitungsdauer (Minuten)': [processing_time],
                             'Material des Werkzeugs': [material],
                             'Werkzeugklasse': [tool_class]}
                     df = pd.DataFrame(data)
 
-                    # Anzeigen der Tabelle
+                    # Displaying the DataFrame
                     st.write('Gespeicherte Daten:')
-                    st.dataframe(df)  # Zeige die DataFrame an
+                    st.dataframe(df)
                 else:
                     st.error('Fehler bei der Klassifizierung. Bitte versuche es erneut.')
 
 if __name__ == '__main__':
     main()
+
 
 
 
