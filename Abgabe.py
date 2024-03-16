@@ -38,9 +38,7 @@ def main():
                 tool_class = predict_tool_class(image)
                 st.success('Klassifizierung abgeschlossen!')
                 st.write('Die Werkzeugklasse ist:', tool_class)
-                st.write('Werkzeugname:', tool_name)
-                st.write('Bearbeitungsdauer:', processing_time, 'Minuten')
-                st.write('Material des Werkzeugs:', material)
+                
 
 if __name__ == '__main__':
     main()
