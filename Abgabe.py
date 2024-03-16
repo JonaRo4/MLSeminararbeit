@@ -50,12 +50,13 @@ def main():
 
                     # Anzeigen der Tabelle
                     st.write('Gespeicherte Daten:')
-                    st.write(df)
+                    st.dataframe(df)  # Zeige die DataFrame an
                 else:
                     st.error('Fehler bei der Klassifizierung. Bitte versuche es erneut.')
 
 if __name__ == '__main__':
     main()
+
 
 
 
