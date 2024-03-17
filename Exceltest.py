@@ -30,17 +30,15 @@ def load_data_from_excel(file_path):
         st.error(f"An error occurred while loading the Excel file: {e}")
         return None
 
-# Function to plot data for a specific tool
-def plot_tool_data(tool_name, df):
-    tool_data = df[df['Werkzeugname'] == tool_name]
-    if not tool_data.empty:
-        plt.figure(figsize=(8, 6))
-        plt.scatter(tool_data['Bearbeitungsdauer (Minuten)'], tool_data['Werkzeugklasse'])
-        plt.xlabel('Bearbeitungsdauer')
-        plt.ylabel('Werkzeugklasse')
-        plt.title(f'Werkzeugklassifikation für {tool_name}')
-        plt.grid(True)
-        st.pyplot()
+# Function to plot graph
+def plot_graph(data, tool_name):
+    fig, ax = plt.subplots()
+    filtered_data = data[data['Werkzeugname'] == tool_name]
+    ax.scatter(filtered_data['Bearbeitungsdauer (Minuten)'], filtered_data['Werkzeugklasse'])
+    ax.set_xlabel('Bearbeitungsdauer (Minuten)')
+    ax.set_ylabel('Werkzeugklasse')
+    ax.set_title(f'Werkzeugklassifizierung für {tool_name}')
+    st.pyplot(fig)
 
 # Streamlit App
 def main():
@@ -84,16 +82,17 @@ def main():
                         # Display the updated DataFrame
                         st.write('Aktualisierte Daten in der Excel-Datei:')
                         st.dataframe(updated_data)
-                        
-                        # Plot tool data if tool name is provided
-                        if tool_name:
-                            plot_tool_data(tool_name, updated_data)
 
+                        # Plot graph
+                        plot_tool_name = st.text_input("Werkzeugname für den Graphen", "")
+                        if st.button('Plotten'):
+                            plot_graph(updated_data, plot_tool_name)
                 else:
                     st.error('Fehler bei der Klassifizierung. Bitte versuche es erneut.')
 
 if __name__ == '__main__':
     main()
+
 
 
 
