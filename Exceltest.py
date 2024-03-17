@@ -31,7 +31,7 @@ def load_data_from_excel(file_path):
 
 # Streamlit App
 def main():
-    st.title('Werkzeugklassifizierung')
+    st.title('Werkzeugzustandsüberwachung')
 
     uploaded_image = st.file_uploader("Bild von Werkzeug hochladen", type=["jpg", "jpeg", "png"])
 
