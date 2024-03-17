@@ -64,12 +64,17 @@ def main():
                     if excel_data is not None:
                         # Append new data to the Excel data
                         updated_data = pd.concat([excel_data, df], ignore_index=True)
+                        
+                        # Write updated data to Excel file
+                        updated_data.to_excel(excel_file_path, index=False)
+                        
                         # Display the updated DataFrame
-                        st.write('Aktualisierte Daten aus der Excel-Datei:')
+                        st.write('Aktualisierte Daten in der Excel-Datei:')
                         st.dataframe(updated_data)
                 else:
                     st.error('Fehler bei der Klassifizierung. Bitte versuche es erneut.')
 
 if __name__ == '__main__':
     main()
+
 
