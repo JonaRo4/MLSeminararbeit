@@ -30,18 +30,17 @@ def load_data_from_excel(file_path):
         st.error(f"An error occurred while loading the Excel file: {e}")
         return None
 
-# Function to plot data
-def plot_data(df, tool_name):
-    try:
-        fig, ax = plt.subplots()
-        tool_data = df[df['Werkzeugname'] == tool_name]
-        ax.scatter(tool_data['Bearbeitungsdauer (Minuten)'], tool_data['Werkzeugklasse'])
-        ax.set_xlabel('Bearbeitungsdauer')
-        ax.set_ylabel('Werkzeugklasse')
-        ax.set_title(f'Werkzeugklasse für {tool_name}')
-        st.pyplot(fig)
-    except Exception as e:
-        st.error(f"An error occurred while plotting data: {e}")
+# Function to plot data for a specific tool
+def plot_tool_data(tool_name, df):
+    tool_data = df[df['Werkzeugname'] == tool_name]
+    if not tool_data.empty:
+        plt.figure(figsize=(8, 6))
+        plt.scatter(tool_data['Bearbeitungsdauer (Minuten)'], tool_data['Werkzeugklasse'])
+        plt.xlabel('Bearbeitungsdauer')
+        plt.ylabel('Werkzeugklasse')
+        plt.title(f'Werkzeugklassifikation für {tool_name}')
+        plt.grid(True)
+        st.pyplot()
 
 # Streamlit App
 def main():
@@ -86,14 +85,16 @@ def main():
                         st.write('Aktualisierte Daten in der Excel-Datei:')
                         st.dataframe(updated_data)
                         
-                        # Plot data
-                        if st.button('Plotten'):
-                            plot_data(updated_data, tool_name)
+                        # Plot tool data if tool name is provided
+                        if tool_name:
+                            plot_tool_data(tool_name, updated_data)
+
                 else:
                     st.error('Fehler bei der Klassifizierung. Bitte versuche es erneut.')
 
 if __name__ == '__main__':
     main()
+
 
 
 
