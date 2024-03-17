@@ -3,6 +3,7 @@ from PIL import Image
 import tensorflow as tf
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Load pretrained model
 model = tf.keras.models.load_model('AbgabeModell.h5')
@@ -29,9 +30,22 @@ def load_data_from_excel(file_path):
         st.error(f"An error occurred while loading the Excel file: {e}")
         return None
 
+# Function to plot data
+def plot_data(df, tool_name):
+    try:
+        fig, ax = plt.subplots()
+        tool_data = df[df['Werkzeugname'] == tool_name]
+        ax.scatter(tool_data['Bearbeitungsdauer (Minuten)'], tool_data['Werkzeugklasse'])
+        ax.set_xlabel('Bearbeitungsdauer')
+        ax.set_ylabel('Werkzeugklasse')
+        ax.set_title(f'Werkzeugklasse für {tool_name}')
+        st.pyplot(fig)
+    except Exception as e:
+        st.error(f"An error occurred while plotting data: {e}")
+
 # Streamlit App
 def main():
-    st.title('Werkzeugzustandsüberwachung')
+    st.title('Werkzeugklassifizierung')
 
     uploaded_image = st.file_uploader("Bild von Werkzeug hochladen", type=["jpg", "jpeg", "png"])
 
@@ -71,10 +85,15 @@ def main():
                         # Display the updated DataFrame
                         st.write('Aktualisierte Daten in der Excel-Datei:')
                         st.dataframe(updated_data)
+                        
+                        # Plot data
+                        if st.button('Plotten'):
+                            plot_data(updated_data, tool_name)
                 else:
                     st.error('Fehler bei der Klassifizierung. Bitte versuche es erneut.')
 
 if __name__ == '__main__':
     main()
+
 
 
